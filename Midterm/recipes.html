@@ -143,8 +143,7 @@
 
 
     </main>
-
-<script>
+    <script>
     const buttons = document.querySelectorAll('.filter-btn');
     const cards = document.querySelectorAll('.recipes-card');
     const search = document.getElementById('recipe-search');
@@ -208,13 +207,13 @@
 
     const params = new URLSearchParams(window.location.search);
     const meal = params.get('meal');
-
+    
     if (['breakfast', 'lunch', 'dinner'].includes(meal)) {
         selectFilter(meal);
     } else {
         selectFilter('can-make');
     }
-</script>
+    </script>
 
   </body>
 </html>
