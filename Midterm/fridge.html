@@ -103,7 +103,7 @@
 
     <script>
   // Find the search input
-  const search = document.getElementById('fridge-search');
+  const search = document.querySelector('.fridge-search');
 
   // Find all ingredient cards
   const ingredients = document.querySelectorAll('.ingredient-card');
@@ -126,12 +126,10 @@
       } else {
         ingredient.style.display = 'none';
       }
-
     });
-
   });
   
   </script>
-  
+
   </body>
 </html>
