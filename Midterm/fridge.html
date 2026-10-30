@@ -58,6 +58,47 @@
                 <h2>My Ingredients</h2>
                 <button class="add-ingredient-btn">+ Add Ingredient</button>
             </div>
+
+
+<!-- Add Ingredient Form -->
+<div class="add-ingredient-form" id="add-ingredient-form" hidden>
+
+    <h3>Add New Ingredient</h3>
+
+    <form id="ingredient-form">
+
+        <label for="ingredient-name">Ingredient Name</label>
+        <input
+            type="text"
+            id="ingredient-name"
+            placeholder="e.g. Tomato"
+            required
+        >
+
+        <label for="ingredient-category">Category</label>
+        <select id="ingredient-category">
+            <option value="vegetable">Vegetable</option>
+            <option value="meat">Meat</option>
+            <option value="fruits">Fruits</option>
+            <option value="dairy">Dairy</option>
+            <option value="others">Others</option>
+        </select>
+
+        <label for="ingredient-days">Days Until Expiry</label>
+        <input
+            type="number"
+            id="ingredient-days"
+            min="0"
+            placeholder="e.g. 3"
+            required
+        >
+
+        <button type="submit">Add</button>
+        <button type="button" id="cancel-ingredient">Cancel</button>
+
+    </form>
+</div>
+
             
             <!-- Fridge Filters -->
 
@@ -186,7 +227,23 @@ filterButtons.forEach(function(button) {
 // Show the correct ingredients when the page loads
 filterIngredients();
 
-  
+
+// Find the Add Ingredient button and form
+const addButton = document.querySelector('.add-ingredient-btn');
+const addForm = document.getElementById('add-ingredient-form');
+const cancelButton = document.getElementById('cancel-ingredient');
+
+// Open the form
+addButton.addEventListener('click', function() {
+    addForm.hidden = false;
+});
+
+// Close the form
+cancelButton.addEventListener('click', function() {
+    addForm.hidden = true;
+});
+
+
   </script>
 
   </body>
