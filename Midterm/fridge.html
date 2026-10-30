@@ -66,35 +66,34 @@
     <h3>Add New Ingredient</h3>
 
     <form id="ingredient-form">
-
+      <div class="form-field">
         <label for="ingredient-name">Ingredient Name</label>
-        <input
-            type="text"
-            id="ingredient-name"
-            placeholder="e.g. Tomato"
-            required
-        >
-
+        <input type="text" id="ingredient-name"
+        placeholder="e.g. Tomato" required>
+      
+      </div>
+      
+      <div class="form-field">
         <label for="ingredient-category">Category</label>
         <select id="ingredient-category">
-            <option value="vegetable">Vegetable</option>
-            <option value="meat">Meat</option>
-            <option value="fruits">Fruits</option>
-            <option value="dairy">Dairy</option>
-            <option value="others">Others</option>
+          <option value="vegetable">Vegetable</option>
+          <option value="meat">Meat</option>
+          <option value="fruits">Fruits</option>
+          <option value="dairy">Dairy</option>
+          <option value="others">Others</option>
         </select>
+      </div>
 
-        <label for="ingredient-days">Days Until Expiry</label>
-        <input
-            type="number"
-            id="ingredient-days"
-            min="0"
-            placeholder="e.g. 3"
-            required
-        >
-
-        <button type="submit">Add</button>
-        <button type="button" id="cancel-ingredient">Cancel</button>
+      <div class="form-field">
+      <label for="ingredient-days">Days Until Expiry</label>
+      <input type="number" id="ingredient-days"
+      min="0" placeholder="e.g. 3" required>
+    </div>
+    
+    <div class="form-actions">
+      <button type="button" id="cancel-ingredient">Cancel</button>
+      <button type="submit">Add Ingredient</button>
+    </div>
 
     </form>
 </div>

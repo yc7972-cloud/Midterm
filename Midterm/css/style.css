@@ -713,3 +713,116 @@ nav:has(.menu.show) {
 
 
 }
+
+/* Add Ingredient Form */
+
+.add-ingredient-form {
+    background-color: white;
+    padding: 28px;
+    border-radius: 20px;
+    margin: 24px 0;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+}
+
+.add-ingredient-form[hidden] {
+    display: none;
+}
+
+.add-ingredient-form h3 {
+    font-size: 24px;
+    margin: 0 0 24px;
+    color: #352c28;
+}
+
+#ingredient-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px 20px;
+}
+
+#ingredient-form label {
+    font-size: 15px;
+    font-weight: 600;
+    color: #352c28;
+}
+
+#ingredient-form label[for="ingredient-name"],
+#ingredient-name {
+    grid-column: 1 / -1;
+}
+
+#ingredient-form input,
+#ingredient-form select {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 13px 15px;
+    border: 1px solid #e8ded7;
+    border-radius: 10px;
+    background-color: #fffaf6;
+    font: inherit;
+    color: #352c28;
+}
+
+#ingredient-form input:focus,
+#ingredient-form select:focus {
+    outline: 2px solid #f47750;
+    outline-offset: 1px;
+}
+
+#ingredient-form button {
+    padding: 12px 20px;
+    border-radius: 25px;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+#ingredient-form button[type="submit"] {
+    background-color: #f47750;
+    color: white;
+    border: none;
+}
+
+#cancel-ingredient {
+    background-color: white;
+    color: #352c28;
+    border: 1px solid #e8ded7;
+}
+
+@media (max-width: 600px) {
+    #ingredient-form {
+        grid-template-columns: 1fr;
+    }
+
+    #ingredient-form label[for="ingredient-name"],
+    #ingredient-name {
+        grid-column: auto;
+    }
+}
+
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 0;
+}
+
+.form-field:first-child {
+    grid-column: 1 / -1;
+}
+
+.form-actions {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 12px;
+}
+
+@media (max-width: 600px) {
+    .form-field:first-child,
+    .form-actions {
+        grid-column: auto;
+    }
+}
