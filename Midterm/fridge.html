@@ -7,41 +7,6 @@
     <link rel="stylesheet" type="text/css" href="./css/style.css" />
 
     <script>
-      /*
-      // THIS VERSION USES THE ONCLICK ATTRIBUTE TO FIRE THE HIDE SHOW FUNCTION
-      // declare a function with the name toggleShow
-
-      function toggleShow() {
-        // grab out menu class ul and store it as a variable in js
-        var menu = document.getElementById('menu')
-        // log this menu in our console
-        console.log(menu)
-        // long way first, but it i more flexible when you add more to it
-        //does the menu have the class name 'show' in its classList?
-        //console.log(menu.classList)
-        // if our classList has the class, remove it
-        if (menu.classList.contains('show')) {
-          menu.classList.remove('show')
-        } else {
-          //otherwise add the 'show' to the classList
-          menu.classList.add('show')
-        }
-      }
-
-      // to call the function in JS
-      // toggleShow()
-      */
-
-      // this should begin 90% of the JS code for HTML that you write in this class
-      // addEventListener(EventToListenFor, function To Fire When that event happens)
-      // document.addEventListener('DOMContentLoaded', function () {
-      //   // document
-      //   //   .getElementById('mobile-menu')
-      //   //   .addEventListener('click', toggleShow)
-
-      //   var hamburger = document.getElementById('mobile-menu')
-      //   hamburger.addEventListener('click', toggleShow)
-      // })
 
       function toggleShow() {
         var menu = document.getElementById('menu')
@@ -61,9 +26,7 @@
   <body>
     <header>
       <h1 class="brand"><a href="#">Frio</a></h1>
-      <!-- Hide this till we hit smaller screens! -->
-      <!-- If you dont use an event listener, you can apply one in the tag itself -->
-      <!-- <span class="mobile-menu" onclick="toggleShow()">&#8801;</span> -->
+
        <span class="mobile-menu" id="mobile-menu" onclick="toggleShow()">&#9776;</span>
 
       <nav>
@@ -86,6 +49,7 @@
              <input
              type="text"
              class="fridge-search"
+             id="fridge-search"
              placeholder="Search ingredients..."
              >
 
@@ -137,6 +101,37 @@
 
     </main>
 
+    <script>
+  // Find the search input
+  const search = document.getElementById('fridge-search');
 
+  // Find all ingredient cards
+  const ingredients = document.querySelectorAll('.ingredient-card');
+
+  // Run whenever the user types
+  search.addEventListener('input', function() {
+
+    // Get the text the user typed
+    const searchText = search.value.toLowerCase();
+
+    // Check each ingredient
+    ingredients.forEach(function(ingredient) {
+
+      // Get the ingredient name
+      const name = ingredient.querySelector('span').textContent.toLowerCase();
+
+      // Show matching ingredients
+      if (name.includes(searchText)) {
+        ingredient.style.display = '';
+      } else {
+        ingredient.style.display = 'none';
+      }
+
+    });
+
+  });
+  
+  </script>
+  
   </body>
 </html>
