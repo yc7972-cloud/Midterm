@@ -62,35 +62,43 @@
             <!-- Fridge Filters -->
 
             <div class="fridge-filters">
-                <button class="fridge-filter-btn active">All</button>
-                <button class="fridge-filter-btn">Near-expiry</button>
-                <button class="fridge-filter-btn">Fresh</button>
-                <button class="fridge-filter-btn">Meat</button>
-                <button class="fridge-filter-btn">Vegetable</button>
-                <button class="fridge-filter-btn">Fruits</button>
-                <button class="fridge-filter-btn">Dairy</button>
-                <button class="fridge-filter-btn">Others</button>
+                <button class="fridge-filter-btn active" data-filter="all">All</button>
+                <button class="fridge-filter-btn" data-filter="near-expiry">Near-expiry</button>
+                <button class="fridge-filter-btn" data-filter="fresh">Fresh</button>
+                <button class="fridge-filter-btn" data-filter="meat">Meat</button>
+                <button class="fridge-filter-btn" data-filter="vegetable">Vegetable</button>
+                <button class="fridge-filter-btn" data-filter="fruits">Fruits</button>
+                <button class="fridge-filter-btn" data-filter="dairy">Dairy</button>
+                <button class="fridge-filter-btn" data-filter="others">Others</button>
             </div>
 
 
             <div class="ingredient-list">
 
-                <div class="ingredient-card">
+                <div class="ingredient-card"
+                data-category="dairy"
+                data-days="2">
                     <span>Milk</span>
                     <span>2 days left</span>
                 </div>
 
-                <div class="ingredient-card">
+                <div class="ingredient-card"
+                data-category="vegetable"
+                data-days="3">
                     <span>Spinach</span>
                     <span>3 days left</span>
                 </div>
 
-                <div class="ingredient-card">
+                <div class="ingredient-card"
+                data-category="meat"
+                data-days="4">
                     <span>Chicken</span>
                     <span>4 days left</span>
                 </div>
 
-                <div class="ingredient-card">
+                <div class="ingredient-card"
+                data-category="others"
+                data-days="7">
                     <span>Eggs</span>
                     <span>7 days left</span>
                 </div>
@@ -108,26 +116,76 @@
   // Find all ingredient cards
   const ingredients = document.querySelectorAll('.ingredient-card');
 
-  // Run whenever the user types
-  search.addEventListener('input', function() {
+  // Find all fridge filter buttons
+const filterButtons = document.querySelectorAll('.fridge-filter-btn');
 
-    // Get the text the user typed
+  // Remember which filter is selected
+let currentFilter = 'all';
+
+
+function filterIngredients() {
+    // Get what the user typed
     const searchText = search.value.toLowerCase();
 
-    // Check each ingredient
+    // Check every ingredient card
     ingredients.forEach(function(ingredient) {
+        const name = ingredient.querySelector('span').textContent.toLowerCase();
 
-      // Get the ingredient name
-      const name = ingredient.querySelector('span').textContent.toLowerCase();
+        // Read ingredient category and days left
+        const category = ingredient.dataset.category;
+        const days = Number(ingredient.dataset.days);
 
-      // Show matching ingredients
-      if (name.includes(searchText)) {
-        ingredient.style.display = '';
-      } else {
-        ingredient.style.display = 'none';
-      }
+        // Check if the ingredient matches the search
+        const matchesSearch = name.includes(searchText);
+
+        // Check if the ingredient matches the selected filter
+        let matchesFilter = false;
+
+        if (currentFilter === 'all') {
+            matchesFilter = true;
+        } else if (currentFilter === 'near-expiry') {
+            matchesFilter = days <= 3;
+        } else if (currentFilter === 'fresh') {
+            matchesFilter = days > 3;
+        } else {
+            matchesFilter = category === currentFilter;
+        }
+
+        // Show only ingredients that match both
+        if (matchesSearch && matchesFilter) {
+            ingredient.style.display = '';
+        } else {
+            ingredient.style.display = 'none';
+        }
     });
-  });
+}
+
+
+ // Run the filter whenever the user types
+search.addEventListener('input', filterIngredients);
+
+// Run the filter whenever a button is clicked
+filterButtons.forEach(function(button) {
+    button.addEventListener('click', function() {
+
+        // Remember which filter was clicked
+        currentFilter = button.dataset.filter;
+
+        // Update the active button style
+        filterButtons.forEach(function(btn) {
+            btn.classList.remove('active');
+        });
+
+        button.classList.add('active');
+
+        // Filter the ingredients
+        filterIngredients();
+    });
+});
+
+// Show the correct ingredients when the page loads
+filterIngredients();
+
   
   </script>
 
