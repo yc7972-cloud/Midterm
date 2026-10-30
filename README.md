@@ -1,4 +1,6 @@
 # Frio - Cook More, Waste Less
+Website:
+https://yc7972-cloud.github.io/Midterm/Midterm/index.html?utm_source=chatgpt.com
 
 ## Project Concept
 
@@ -32,4 +34,4 @@ Frio is designed with a mobile first approach. I will build the mobile layout fi
 The visual design uses warm colors, food photography, and simple navigation.
 
 ## Wireframe & Sitemap
-![Frio Wireframe](img/wireframe.png)
+![Frio Wireframe](Midterm/img/wireframe.png)
