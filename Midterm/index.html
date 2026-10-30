@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Frio — Cook More, Waste Less</title>
+    <link rel="stylesheet" type="text/css" href="./css/style.css" />
+
+    <script>
+      /*
+      // THIS VERSION USES THE ONCLICK ATTRIBUTE TO FIRE THE HIDE SHOW FUNCTION
+      // declare a function with the name toggleShow
+
+      function toggleShow() {
+        // grab out menu class ul and store it as a variable in js
+        var menu = document.getElementById('menu')
+        // log this menu in our console
+        console.log(menu)
+        // long way first, but it i more flexible when you add more to it
+        //does the menu have the class name 'show' in its classList?
+        //console.log(menu.classList)
+        // if our classList has the class, remove it
+        if (menu.classList.contains('show')) {
+          menu.classList.remove('show')
+        } else {
+          //otherwise add the 'show' to the classList
+          menu.classList.add('show')
+        }
+      }
+
+      // to call the function in JS
+      // toggleShow()
+      */
+
+      // this should begin 90% of the JS code for HTML that you write in this class
+      // addEventListener(EventToListenFor, function To Fire When that event happens)
+      // document.addEventListener('DOMContentLoaded', function () {
+      //   // document
+      //   //   .getElementById('mobile-menu')
+      //   //   .addEventListener('click', toggleShow)
+
+      //   var hamburger = document.getElementById('mobile-menu')
+      //   hamburger.addEventListener('click', toggleShow)
+      // })
+
+      function toggleShow() {
+        var menu = document.getElementById('menu')
+        var hamburger = document.getElementById('mobile-menu')
+
+        menu.classList.toggle('show')
+
+        if (menu.classList.contains('show')) {
+            hamburger.innerHTML = '&times;'
+        } else {
+            hamburger.innerHTML = '&#9776;'
+        }
+    }
+
+    </script>
+  </head>
+  <body>
+    <header>
+      <h1 class="brand"><a href="#">Frio</a></h1>
+      <!-- Hide this till we hit smaller screens! -->
+      <!-- If you dont use an event listener, you can apply one in the tag itself -->
+      <!-- <span class="mobile-menu" onclick="toggleShow()">&#8801;</span> -->
+       <span class="mobile-menu" id="mobile-menu" onclick="toggleShow()">&#9776;</span>
+
+      <nav>
+        <ul class="menu" id="menu">
+          <li><a href="index.html">HOME</a></li>
+          <li><a href="recipes.html">RECIPES</a></li>
+          <li><a href="fridge.html">MY FRIDGE</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-text">
+                <h1>Let's use what you already have.</h1>
+
+                <p>
+                    Turn your ingredients into delicious meals,
+                    and reduce food waste.
+                </p>
+                <a href="#" class="hero-button">
+                    Find Recipes →
+                </a>
+            </div>
+        </section>
+
+        <!-- Meal Section -->
+         <section class="meal-section">
+         <h2>What Are You Cooking?</h2>
+         <div class="meal-container">
+            <a href="recipes.html" class="meal-card">
+                <img src="./img/breakfast.jpg" alt="Breakfast">
+                <h3>Breakfast</h3>
+            </a>
+
+            <a href="recipes.html" class="meal-card">
+                <img src="./img/lunch.webp" alt="Lunch">
+                <h3>Lunch</h3>
+            </a>
+
+            <a href="recipes.html" class="meal-card">
+                <img src="./img/dinner.jpg" alt="Dinner">
+                <h3>Dinner</h3>
+            </a>
+
+         </div>
+         </section>
+
+         <!-- CAN MAKE NOW SECTION -->
+          <section class="can-make-section">
+            <h2>Can Make Now</h2>
+            <p>Recipes using ingredients already in your fridge.</p>
+            <div class="recipe-container">
+                
+                <a href="recipes.html" class="recipe-card">
+                    <img src="./img/omelette.jpg" alt="Spinach Omelette">
+                    <h3>Spinach Omelette</h3>
+                </a>
+                <a href="recipes.html" class="recipe-card">
+                    <img src="./img/friedrice.jpeg" alt="Egg Fried Rice">
+                    <h3>Egg Fried Rice</h3>
+                </a>
+            </div>
+        </section>
+        
+        
+        <!-- EXPIRING INGREDIENTS SECTION -->
+         <section class="expiring-section">
+
+            <h2>Use These Before They Expire</h2>
+
+            <div class="expiring-list">
+                <div class="expiring-item">
+                    <p>🥛 Milk · 2 days left</p>
+                </div>
+
+                <div class="expiring-item">
+                    <p>🥬 Spinach · 3 days left</p>
+                </div>
+
+                <div class="expiring-item">
+                    <p>🍗 Chicken · 4 days left</p>
+                </div>
+            </div>
+        
+        </section>
+
+
+    </main>
+
+
+  </body>
+</html>
