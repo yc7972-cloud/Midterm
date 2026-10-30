@@ -153,9 +153,6 @@
   // Find the search input
   const search = document.querySelector('.fridge-search');
 
-  // Find all ingredient cards
-  const ingredients = document.querySelectorAll('.ingredient-card');
-
   // Find all fridge filter buttons
 const filterButtons = document.querySelectorAll('.fridge-filter-btn');
 
@@ -164,9 +161,11 @@ let currentFilter = 'all';
 
 
 function filterIngredients() {
+    // Find all ingredient cards, including newly added ones
+    const ingredients = document.querySelectorAll('.ingredient-card');
+
     // Get what the user typed
     const searchText = search.value.toLowerCase();
-
     // Check every ingredient card
     ingredients.forEach(function(ingredient) {
         const name = ingredient.querySelector('span').textContent.toLowerCase();
@@ -239,6 +238,48 @@ addButton.addEventListener('click', function() {
 
 // Close the form
 cancelButton.addEventListener('click', function() {
+    addForm.hidden = true;
+});
+
+
+const ingredientForm = document.getElementById('ingredient-form');
+const ingredientList = document.querySelector('.ingredient-list');
+
+// Add a new ingredient when the form is submitted
+ingredientForm.addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    // Get the user's input
+    const name = document.getElementById('ingredient-name').value.trim();
+    const category = document.getElementById('ingredient-category').value;
+    const days = Number(document.getElementById('ingredient-days').value);
+
+    if (!name) return;
+
+    // Create a new ingredient card
+    const newIngredient = document.createElement('div');
+    newIngredient.className = 'ingredient-card';
+    newIngredient.dataset.category = category;
+    newIngredient.dataset.days = days;
+
+    // Create ingredient name
+    const nameSpan = document.createElement('span');
+    nameSpan.textContent = name;
+
+    // Create expiry text
+    const daysSpan = document.createElement('span');
+    daysSpan.textContent = days === 1 ? '1 day left' : days + ' days left';
+
+    // Put the text inside the card
+    newIngredient.appendChild(nameSpan);
+    newIngredient.appendChild(daysSpan);
+
+    // Add the card to the fridge
+    ingredientList.appendChild(newIngredient);
+    filterIngredients();
+
+    // Reset and close the form
+    ingredientForm.reset();
     addForm.hidden = true;
 });
 
