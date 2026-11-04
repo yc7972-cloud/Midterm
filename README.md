@@ -1,6 +1,6 @@
 # Frio - Cook More, Waste Less
 Website:
-https://yc7972-cloud.github.io/Midterm/Midterm/index.html?utm_source=chatgpt.com
+https://yc7972-cloud.github.io/Midterm/Midterm/index.html?utm
 
 ## Project Concept
 
